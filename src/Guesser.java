@@ -4,26 +4,31 @@ public class Guesser {
         Scanner input = new Scanner(System.in);
         boolean online  = true;
         Random rand  = new Random();
+        int NumToGuess = rand.nextInt(100) +1;
+
 
 
         System.out.println("Welcome to Guesser, Guess a number between 1 and 100 (000 to quit)");
 
         while(online){
-            int NumToGuess = (int) rand.nextInt(100)+1;
             int guess = input.nextInt();
-            if(guess > NumToGuess){
-                System.out.println("Wrong, guess lower");
-            }
-            else if (guess < NumToGuess) {
-                System.out.println("wrong, guess higher");
-            }
-            else if (guess == 000){
-                System.out.println("Darn, the number was "+NumToGuess);
-                System.out.println("New Number! Guess again");
-            }
-            else {
+            if(guess == NumToGuess){
                 System.out.println("Correct! the Number was "+NumToGuess+"!");
                 System.out.println("New Number! Guess again");
+                NumToGuess = rand.nextInt(100) +1;
+                continue;
+            }
+            else if (guess == -1){
+                System.out.println("Darn, the number was "+NumToGuess);
+                System.out.println("New Number! Guess again");
+                NumToGuess = rand.nextInt(100) +1;
+                continue;
+            }
+            if (guess < NumToGuess) {
+                System.out.println("wrong, guess higher");
+            }
+            if (guess > NumToGuess){
+                System.out.println("wrong, guess lower");
             }
         }
         System.out.print("Thanks for playing, Goodbye");
