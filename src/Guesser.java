@@ -16,18 +16,19 @@ public class Guesser {
                 System.out.println("Correct! the Number was "+NumToGuess+"!");
                 System.out.println("New Number! Guess again");
                 NumToGuess = rand.nextInt(100) +1;
-                continue;
             }
             else if (guess == -1){
                 System.out.println("Darn, the number was "+NumToGuess);
                 System.out.println("New Number! Guess again");
                 NumToGuess = rand.nextInt(100) +1;
-                continue;
             }
-            if (guess < NumToGuess) {
+            else if (guess == 0){
+                online = false;
+            }
+            else if (guess < NumToGuess) {
                 System.out.println("wrong, guess higher");
             }
-            if (guess > NumToGuess){
+            else if (guess > NumToGuess){
                 System.out.println("wrong, guess lower");
             }
         }
