@@ -4,23 +4,25 @@ public class Guesser {
         Scanner input = new Scanner(System.in);
         boolean online  = true;
         Random rand  = new Random();
-        int NumToGuess = rand.nextInt(100) +1;
+        int Range = 0;
+        System.out.println("Welcome to Guesser,Choose a Range of Numbers, 10, 100, or 1000 ");
+        Range = input.nextInt();
+        int NumToGuess = rand.nextInt(Range) +1;
 
 
-
-        System.out.println("Welcome to Guesser, Guess a number between 1 and 100 (000 to quit)");
+        System.out.println("Welcome to Guesser, Guess a number between 1 and " + Range + " (-1 to give up, 0 to quit)");
 
         while(online){
             int guess = input.nextInt();
             if(guess == NumToGuess){
                 System.out.println("Correct! the Number was "+NumToGuess+"!");
                 System.out.println("New Number! Guess again");
-                NumToGuess = rand.nextInt(100) +1;
+                NumToGuess = rand.nextInt(Range) +1;
             }
             else if (guess == -1){
                 System.out.println("Darn, the number was "+NumToGuess);
                 System.out.println("New Number! Guess again");
-                NumToGuess = rand.nextInt(100) +1;
+                NumToGuess = rand.nextInt(Range) +1;
             }
             else if (guess == 0){
                 online = false;
